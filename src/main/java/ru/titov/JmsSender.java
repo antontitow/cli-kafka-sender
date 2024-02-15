@@ -1,40 +1,34 @@
 package ru.titov;
 
-import java.util.Arrays;
+import ru.titov.env.Properties;
+
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class JmsSender {
 
     public static void main(String... args) {
-        Map<String, String> properties = new HashMap<>();
-        properties = getArguments(args);
+        Map<String, String> properties = getArguments(args);
         System.out.println("Start application");
-        System.out.println("Search file");
-
-
+        System.out.println("Search file" + properties.get(Properties.FILE.name()));
     }
 
     private static Map<String, String> getArguments(String... args) {
-        List<String> kafkaLocation = Arrays.asList("-l", "l", "location", "-location");
-        List<String> topic = Arrays.asList("-t", "t", "topic", "-topic");
-        List<String> file = Arrays.asList("-f", "f", "file", "-file");
         Map<String, String> properties = new HashMap<>();
 
         for (var i = 0; i <= args.length - 2; i = i + 2) {
-            if (kafkaLocation.contains(args[i])) {
-                properties.put("location", args[i + 1]);
+            if (Properties.LOCATION.getValues().contains(args[i])) {
+                properties.put(Properties.LOCATION.name(), args[i + 1]);
                 continue;
             }
 
-            if (topic.contains(args[i])) {
-                properties.put("topic", args[i + 1]);
+            if (Properties.TOPIC.getValues().contains(args[i])) {
+                properties.put(Properties.TOPIC.name(), args[i + 1]);
                 continue;
             }
 
-            if (file.contains(args[i])) {
-                properties.put("file", args[i + 1]);
+            if (Properties.FILE.getValues().contains(args[i])) {
+                properties.put(Properties.FILE.name(), args[i + 1]);
             }
         }
 
@@ -42,7 +36,6 @@ public class JmsSender {
         properties.forEach((k, v) -> System.out.println(k + "->" + v));
 
         validProperties(properties);
-
 
         return properties;
     }
