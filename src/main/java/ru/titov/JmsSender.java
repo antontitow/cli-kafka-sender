@@ -1,16 +1,27 @@
 package ru.titov;
 
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import ru.titov.env.Properties;
 
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
 public class JmsSender {
 
-    public static void main(String... args) {
+    public static void main(String... args) throws IOException, ParseException {
         Map<String, String> properties = getArguments(args);
         System.out.println("Start application");
         System.out.println("Search file" + properties.get(Properties.FILE.name()));
+
+        try {
+            Object obj = new JSONParser().parse(new FileReader(properties.get(Properties.FILE.name())));
+        } catch (Exception e) {
+            throw new RuntimeException("File parsing error");
+        }
+
     }
 
     private static Map<String, String> getArguments(String... args) {
