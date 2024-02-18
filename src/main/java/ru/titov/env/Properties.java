@@ -4,9 +4,9 @@ import java.util.Arrays;
 import java.util.List;
 
 public enum Properties {
-    LOCATION("-l", "l", "location", "-location"),
+    KAFKA_SERVERS("-l", "l", "location", "-location"),
     TOPIC("-t", "t", "topic", "-topic"),
-    FILE("-f", "f", "file", "-file");
+    FILE_TO_PARSE("-f", "f", "file", "-file");
 
     private List<String> values;
 
