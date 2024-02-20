@@ -8,6 +8,8 @@ import java.lang.reflect.Type;
 import java.util.List;
 
 public class JsonParser {
+    private static final String FILE_PARSING_ERROR = "File parsing error";
+
     public static List<Object> parseFile(String path) {
         try {
             Gson gson = new Gson();
@@ -16,7 +18,7 @@ public class JsonParser {
 
             return gson.fromJson(new FileReader(path), listType);
         } catch (Exception e) {
-            throw new RuntimeException("File parsing error");
+            throw new RuntimeException(FILE_PARSING_ERROR);
         }
     }
 }

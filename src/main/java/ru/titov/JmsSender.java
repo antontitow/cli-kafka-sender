@@ -12,6 +12,7 @@ import static ru.titov.parser.JsonParser.parseFile;
 public class JmsSender {
 
     public static void main(String... args) {
+
         Map<String, String> properties = getArguments(args);
         List<Object> objectList = parseFile(properties.get(Properties.FILE_TO_PARSE.name()));
         new KafkaProducerService(properties.get(Properties.KAFKA_SERVERS.name())).

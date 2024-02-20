@@ -14,7 +14,7 @@
     start zookeeper-server-stop.bat
 
 Пример запуска в консоле:
-    java -jar jms-sender.jar l localhost:9092 t test-topic4 f C:\Users\anton\IdeaProjects\sample.json
+    java -jar jms-sender.jar l localhost:9092 t test-topic18 f C:\Users\anton\IdeaProjects\sample.json
 
 Порядок параметров не важен, допустима замена алиасов.
     адрес кафка:

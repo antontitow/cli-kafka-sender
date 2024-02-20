@@ -6,6 +6,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ArgumentParser {
+    private static final String GET_NEXT_PROPERTIES = "Get next properties:";
+    private static final String INVALID_PARAMS = "Error: parameters are specified incorrectly";
+    private static final String SEPARATOR = "->";
+
     public static Map<String, String> getArguments(String... args) {
         Map<String, String> properties = new HashMap<>();
 
@@ -25,8 +29,8 @@ public class ArgumentParser {
             }
         }
 
-        System.out.println("Get next properties:");
-        properties.forEach((k, v) -> System.out.println(k + "->" + v));
+        System.out.println(GET_NEXT_PROPERTIES);
+        properties.forEach((k, v) -> System.out.println(k + SEPARATOR + v));
 
         validProperties(properties);
 
@@ -35,7 +39,7 @@ public class ArgumentParser {
 
     private static void validProperties(Map<String, String> properties) {
         if (properties.isEmpty() || properties.keySet().size() != 3) {
-            throw new RuntimeException("Error: parameters are specified incorrectly");
+            throw new RuntimeException(INVALID_PARAMS);
         }
     }
 }

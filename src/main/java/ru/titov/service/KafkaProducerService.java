@@ -9,6 +9,9 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 public class KafkaProducerService {
+    public static final String SEND_INFO = "sent record(key=%s value=%s) " + "meta(partition=%d, offset=%d) time=%d\n";
+    public static final String SEND_ERROR = "Object %s not sent";
+
     private final Producer<String, Object> producer;
 
     public KafkaProducerService(String kafkaServer) {
@@ -23,8 +26,7 @@ public class KafkaProducerService {
         RecordMetadata metadata = this.producer.send(record).get();
         long elapsedTime = System.currentTimeMillis() - time;
 
-        System.out.printf("sent record(key=%s value=%s) " +
-                        "meta(partition=%d, offset=%d) time=%d\n",
+        System.out.printf(SEND_INFO,
                 record.key(),
                 record.value(),
                 metadata.partition(),
@@ -39,7 +41,7 @@ public class KafkaProducerService {
                 try {
                     this.send(topic, obj);
                 } catch (Exception e) {
-                    System.out.printf("Object %s not sent", obj);
+                    System.out.printf(SEND_ERROR, obj);
                     throw new RuntimeException(e);
                 }
             });
