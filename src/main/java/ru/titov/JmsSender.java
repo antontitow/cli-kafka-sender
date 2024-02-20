@@ -13,12 +13,8 @@ public class JmsSender {
 
     public static void main(String... args) {
         Map<String, String> properties = getArguments(args);
-        System.out.println("Search file " + properties.get(Properties.FILE_TO_PARSE.name()));
-
         List<Object> objectList = parseFile(properties.get(Properties.FILE_TO_PARSE.name()));
-
         new KafkaProducerService(properties.get(Properties.KAFKA_SERVERS.name())).
                 send(properties.get(Properties.TOPIC.name()), objectList);
-
     }
 }

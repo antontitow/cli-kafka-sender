@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 public class KafkaProducerService {
-    private final Producer<String, String> producer;
+    private final Producer<String, Object> producer;
 
     public KafkaProducerService(String kafkaServer) {
         this.producer = KafkaProducerConfig.createProducer(kafkaServer);
@@ -18,7 +18,7 @@ public class KafkaProducerService {
     private void send(String topic, Object object) throws ExecutionException, InterruptedException {
 
         long time = System.currentTimeMillis();
-        final ProducerRecord<String, String> record = new ProducerRecord<>(topic, object.toString());
+        final ProducerRecord<String, Object> record = new ProducerRecord<>(topic, String.valueOf(time), object);
 
         RecordMetadata metadata = this.producer.send(record).get();
         long elapsedTime = System.currentTimeMillis() - time;
@@ -35,11 +35,11 @@ public class KafkaProducerService {
 
     public void send(String topic, List<Object> objects) {
         try {
-            objects.stream().forEach(obj -> {
+            objects.forEach(obj -> {
                 try {
                     this.send(topic, obj);
                 } catch (Exception e) {
-                    System.out.printf("Object %s not sent", obj.toString());
+                    System.out.printf("Object %s not sent", obj);
                     throw new RuntimeException(e);
                 }
             });

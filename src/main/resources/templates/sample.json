@@ -1,0 +1,74 @@
+[{
+    "tomment":"My comment232",
+    "count":"10",
+    "diskParam":
+    {
+      "db":"10.000000",
+      "dbAngle":"1.234000"
+    },
+    "range":true,
+    "range2":true,
+    "blades":
+    [
+      {
+        "caption":"A",
+        "value":"65"
+      },
+      {
+        "caption":"B",
+        "value":"66"
+      },
+      {
+        "caption":"C",
+        "value":"67"
+      }
+    ]
+  },
+  {
+    "tomment":"My comment232",
+    "count":"10",
+    "diskParam":
+    {
+      "db":"10.000000",
+      "dbAngle":"1.234000"
+    },
+    "range":true,
+    "blades": null
+  },
+  {
+    "tomment":"My comment232",
+    "count":"10",
+    "diskParam":
+    {
+      "db":"10.000000",
+      "dbAngle":"1.234000"
+    },
+    "range":true,
+    "blades":
+    [
+      {
+        "caption":"A",
+        "value":"65"
+      },
+      {
+        "caption":"B",
+        "value":"66"
+      },
+      {
+        "caption":"C",
+        "value":"67"
+      }
+    ]
+  },
+  {
+    "tomment":"My comment232",
+    "count":"10",
+    "diskParam":
+    {
+      "db":"10.000000",
+      "dbAngle":"1.234000"
+    },
+    "range":true,
+    "blades": null
+  }
+]

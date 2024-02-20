@@ -13,10 +13,8 @@ public class JsonParser {
             Gson gson = new Gson();
             Type listType = new TypeToken<List<Object>>() {
             }.getType();
-            List<Object> gsonList = gson.fromJson(new FileReader(path), listType);
-            gsonList.forEach(r -> System.out.println(r.toString()));
 
-            return gsonList;
+            return gson.fromJson(new FileReader(path), listType);
         } catch (Exception e) {
             throw new RuntimeException("File parsing error");
         }
