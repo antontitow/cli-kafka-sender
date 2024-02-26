@@ -1,6 +1,6 @@
 package ru.titov.parser;
 
-import ru.titov.env.Properties;
+import ru.titov.env.AppRunProperties;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,18 +14,18 @@ public class ArgumentParser {
         Map<String, String> properties = new HashMap<>();
 
         for (var i = 0; i <= args.length - 2; i = i + 2) {
-            if (Properties.KAFKA_SERVERS.getValues().contains(args[i])) {
-                properties.put(Properties.KAFKA_SERVERS.name(), args[i + 1]);
+            if (AppRunProperties.KAFKA_SERVERS.getValues().contains(args[i])) {
+                properties.put(AppRunProperties.KAFKA_SERVERS.name(), args[i + 1]);
                 continue;
             }
 
-            if (Properties.TOPIC.getValues().contains(args[i])) {
-                properties.put(Properties.TOPIC.name(), args[i + 1]);
+            if (AppRunProperties.TOPIC.getValues().contains(args[i])) {
+                properties.put(AppRunProperties.TOPIC.name(), args[i + 1]);
                 continue;
             }
 
-            if (Properties.FILE_TO_PARSE.getValues().contains(args[i])) {
-                properties.put(Properties.FILE_TO_PARSE.name(), args[i + 1]);
+            if (AppRunProperties.FILE_TO_PARSE.getValues().contains(args[i])) {
+                properties.put(AppRunProperties.FILE_TO_PARSE.name(), args[i + 1]);
             }
         }
 

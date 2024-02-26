@@ -13,13 +13,17 @@
     start kafka-server-stop.bat
     start zookeeper-server-stop.bat
 
-Пример запуска в консоле:
-    java -jar jms-sender.jar l localhost:9092 t test-topic18 f C:\Users\anton\IdeaProjects\sample.json
+_Пример запуска в консоле_
+    java -jar jms-sender.jar l localhost:9092 t test-topic23 f C:\Users\anton\IdeaProjects\sample.json
 
-Порядок параметров не важен, допустима замена алиасов.
+Порядок параметров (параметр-значение) не важен, допустима замена алиасов.
     адрес кафка:
     l -l -location location
     топик:
     t -t topic -topic
     расположение файла, содержащего json. Или абсолютный или относительно jar файла:
     f -f file -file
+
+_Настройка SSL для работы с кафка_ (только для тип SSL)
+    Рядом с jms-sender.jar необходимо разместить файл kafkaconfig.properties.
+    Пример содержимого в templates/kafkaconfig.properties
