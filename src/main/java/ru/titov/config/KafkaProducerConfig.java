@@ -64,7 +64,7 @@ public class KafkaProducerConfig {
         properties.put(SslConfigs.SSL_KEYSTORE_PASSWORD_CONFIG, fileProperties.getProperty(SslConfigParams.SSL_KEYSTORE_PASSWORD_CONFIG.getValue()));
         properties.put(SslConfigs.SSL_KEY_PASSWORD_CONFIG, fileProperties.getProperty(SslConfigParams.SSL_KEY_PASSWORD_CONFIG.getValue()));
 
-        properties.entrySet().stream().forEach(prop -> System.out.println("key: " + prop.getKey() + "   value: " + prop.getValue()));
+        properties.forEach((key, value) -> System.out.println("key: " + key + "   value: " + value));
 
         return properties;
     }

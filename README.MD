@@ -15,6 +15,7 @@
 
 _Пример запуска в консоле_
     java -jar jms-sender.jar l localhost:9092 t test-topic23 f C:\Users\anton\IdeaProjects\sample.json
+    java -jar jms-sender.jar l localhost:29092 t kafka-out-roul-orkestrator-doc-status f C:\Users\artitov\kube\sample.json
 
 Порядок параметров (параметр-значение) не важен, допустима замена алиасов.
     адрес кафка:
