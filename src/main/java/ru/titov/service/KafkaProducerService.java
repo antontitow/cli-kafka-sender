@@ -12,7 +12,8 @@ public class KafkaProducerService {
     public static final String SEND_INFO = "sent record(key=%s value=%s) " + "meta(partition=%d, offset=%d) time=%d\n";
     public static final String SEND_ERROR = "Object %s not sent";
 
-    private final Producer<String, Object> producer;
+//    private final Producer<String, Object> producer;
+    private final Producer<String, String> producer;
 
     public KafkaProducerService(String kafkaServer) {
         this.producer = KafkaProducerConfig.createProducer(kafkaServer);
@@ -21,7 +22,8 @@ public class KafkaProducerService {
     private void send(String topic, Object object) throws ExecutionException, InterruptedException {
 
         long time = System.currentTimeMillis();
-        final ProducerRecord<String, Object> record = new ProducerRecord<>(topic, String.valueOf(time), object);
+//        final ProducerRecord<String, Object> record = new ProducerRecord<>(topic, String.valueOf(time), object);
+        final ProducerRecord<String, String> record = new ProducerRecord<>(topic, String.valueOf(time), object.toString());
 
         RecordMetadata metadata = this.producer.send(record).get();
         long elapsedTime = System.currentTimeMillis() - time;
